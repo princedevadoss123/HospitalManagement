@@ -12,8 +12,8 @@ import javax.persistence.Table;
 
 public class Staff {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long S_ID;
+	@Column(name="S_ID",nullable=false,length=30)
+	private String S_ID;
 	
 	@Column(name="S_name",nullable=false,length=30)
 	private String S_name;
@@ -27,11 +27,11 @@ public class Staff {
 	@Column(name="Password",nullable=false,length=30)
 	private String Password;
 
-	public Long getS_ID() {
+	public String getS_ID() {
 		return S_ID;
 	}
 
-	public void setS_ID(Long s_ID) {
+	public void setS_ID(String s_ID) {
 		S_ID = s_ID;
 	}
 

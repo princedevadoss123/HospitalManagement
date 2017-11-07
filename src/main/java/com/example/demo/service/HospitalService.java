@@ -6,4 +6,5 @@ import com.example.demo.model.DoctorTO;
 
 public interface HospitalService {
 		List<DoctorTO> getDoctorDetails();
+		DoctorTO getSingleDetail(String id);
 }

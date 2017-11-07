@@ -30,6 +30,24 @@ public class HospitalImplementation implements HospitalService {
 			doc.add(docc);
 		}
 		return doc;
+		}
 		
+		@Override
+		public DoctorTO getSingleDetail(String id){
+			
+			DoctorTO temp=new DoctorTO();
+			Staff st=staff.findOne(id);
+			if(st!=null){
+			temp.setRole(st.getRole());
+			temp.setS_ID(st.getS_ID());
+			temp.setS_NAME(st.getS_name());
+			temp.setSpecialist(st.getSpecialist());
+			temp.setPassword(st.getPassword());
+			}
+			else
+			{
+			temp.setS_NAME("Not present");	
+			}
+			return(temp);
 		}
 }

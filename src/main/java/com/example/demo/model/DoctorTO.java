@@ -1,15 +1,15 @@
 package com.example.demo.model;
 
 public class DoctorTO {
-		private Long S_ID;
+		private String S_ID;
 		private String S_NAME;
 		private String Specialist;
 		private int role;
 		private String Password;
-		public Long getS_ID() {
+		public String getS_ID() {
 			return S_ID;
 		}
-		public void setS_ID(Long s_ID) {
+		public void setS_ID(String s_ID) {
 			S_ID = s_ID;
 		}
 		public String getS_NAME() {

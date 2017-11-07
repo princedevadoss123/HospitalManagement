@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.example.demo.domain.Staff;
 
 @Transactional
-public interface StaffInfo extends CrudRepository<Staff,Long>{
+public interface StaffInfo extends CrudRepository<Staff,String>{
 		
 }

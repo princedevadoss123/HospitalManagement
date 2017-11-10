@@ -46,7 +46,6 @@ public class HospitalImplementation implements HospitalService {
 		
 		@Override
 		public DoctorTO getSingleDetail(String id){
-			
 			DoctorTO temp=new DoctorTO();
 			Staff st=staff.findOne(id);
 			if(st!=null){
@@ -58,7 +57,6 @@ public class HospitalImplementation implements HospitalService {
 			}
 			return(temp);
 		}
-
 		@Override
 		public String registerPatient(PatientTO patient) {
 			
@@ -73,11 +71,6 @@ public class HospitalImplementation implements HospitalService {
 			else if(patientinfo.exists(p.getP_ID())){
 				return "Existing";	
 			}
-			
-			
-			
-			
-				
 			return null;
 		}
 
@@ -85,6 +78,56 @@ public class HospitalImplementation implements HospitalService {
 		Patient pp = new Patient();
 		pp.setP_ID(p_ID);
 		pp.setP_Name(p_Name);
-			return pp;
+		return pp;
+		}
+		
+		@Override
+		public DoctorTO login(String id,String password){
+			DoctorTO temp=new DoctorTO();
+			Staff st=staff.findOne(id);
+			if(st!=null && password.equals(st.getPassword()))
+			{
+				temp.setRole(st.getRole());
+				temp.setS_ID(st.getS_ID());
+				temp.setS_NAME(st.getS_name());
+				temp.setSpecialist(st.getSpecialist());
+			}
+			else{
+				temp.setS_NAME("LOGIN FAILED");
+			}
+			return(temp);
+		}
+		
+		@Override
+		public String add(String id,String name,String specialist,String password){
+			
+			DoctorTO doc=getSingleDetail(id);
+			if(doc.getS_ID()==null){
+				Staff st=new Staff();
+				st.setRole(1);
+				st.setPassword(password);
+				st.setS_ID(id);
+				st.setS_name(name);
+				st.setSpecialist(specialist);
+				staff.save(st);
+				return "done";
+			}
+			else{
+				return "Already present";
+			}
+		}
+		
+		@Override
+		public String delete(String id){
+			
+			DoctorTO doc=getSingleDetail(id);
+			if(doc.getS_ID()!=null){
+				staff.delete(id);
+				return("done");
+			}
+			else{
+				return("Not Present");
+			}
+			
 		}
 }

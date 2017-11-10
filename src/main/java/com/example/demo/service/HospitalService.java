@@ -9,4 +9,7 @@ public interface HospitalService {
 		List<DoctorTO> getDoctorDetails();
 		DoctorTO getSingleDetail(String id);
 		String registerPatient(PatientTO patient);
+		DoctorTO login(String id,String password);
+		String add(String id,String name,String specialist,String password);
+		String delete(String id);
 }

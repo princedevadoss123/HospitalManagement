@@ -1,0 +1,15 @@
+<section data-ng-controller="machineryController" data-ng-init="initcontrol()" >
+
+<div class="wrapper">
+<div class="color absolute-panel">
+	<div  class="divraw row" ng-repeat="url in avatar_url">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+<a href="#"><img  class="resolution" ng-src="{{url.url}}"/></a>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 left-align">
+{{url.title}} {{url.description}}
+</div>
+</div>
+</div>
+</div>
+</section>

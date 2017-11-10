@@ -16,18 +16,22 @@ public class HospitalImplementation implements HospitalService {
 		@Autowired
 		private StaffInfo staff;
 		
-		@Override
-		public List<DoctorTO> getDoctorDetails() {
-		List<DoctorTO> doc=new ArrayList<DoctorTO>();
-		List<Staff> st=(List<Staff>)staff.findAll();
-		for(Staff s:st) {
+		private DoctorTO setDoctorTO(Staff s){
 			DoctorTO docc=new DoctorTO();
 			docc.setS_ID(s.getS_ID());
 			docc.setS_NAME(s.getS_name());
 			docc.setRole(s.getRole());
 			docc.setSpecialist(s.getSpecialist());
 			docc.setPassword(s.getPassword());
-			doc.add(docc);
+			return docc;
+		}
+		
+		@Override
+		public List<DoctorTO> getDoctorDetails() {
+		List<DoctorTO> doc=new ArrayList<DoctorTO>();
+		List<Staff> st=(List<Staff>)staff.findAll();
+		for(Staff s:st) {
+			doc.add(new HospitalImplementation().setDoctorTO(s));
 		}
 		return doc;
 		}
@@ -38,11 +42,7 @@ public class HospitalImplementation implements HospitalService {
 			DoctorTO temp=new DoctorTO();
 			Staff st=staff.findOne(id);
 			if(st!=null){
-			temp.setRole(st.getRole());
-			temp.setS_ID(st.getS_ID());
-			temp.setS_NAME(st.getS_name());
-			temp.setSpecialist(st.getSpecialist());
-			temp.setPassword(st.getPassword());
+			temp=new HospitalImplementation().setDoctorTO(st);
 			}
 			else
 			{

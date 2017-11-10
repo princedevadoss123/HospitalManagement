@@ -26,11 +26,5 @@ public class HospitalController {
 	@RequestMapping(value="/viewdetail/{id}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public DoctorTO getSingleDoctor(@PathVariable("id") String id){
 		return controller.getSingleDetail(id);
-	}
-//	
-//	@RequestMapping(value="/login/{id}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-//	public DoctorTO getLogin(@PathVariable("id") Long id){
-//		return controller.getSingleDetail(id);
-//	}
-	
+	}	
 }

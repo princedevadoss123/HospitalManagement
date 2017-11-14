@@ -130,4 +130,23 @@ public class HospitalImplementation implements HospitalService {
 			}
 			
 		}
+		
+		@Override
+		public String update(String id,String name,String password){
+			
+			DoctorTO doc=getSingleDetail(id);
+			if(doc.getS_ID()!=null){
+				Staff st=new Staff();
+				st.setRole(doc.getRole());
+				st.setPassword(password);
+				st.setS_ID(doc.getS_ID());
+				st.setS_name(name);
+				st.setSpecialist(doc.getSpecialist());
+				staff.save(st);
+				return "done";
+			}
+			else{
+				return "failed";
+			}
+		}
 }

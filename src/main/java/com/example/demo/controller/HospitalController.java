@@ -45,4 +45,9 @@ public class HospitalController {
 	public String delete(@PathVariable String id){
 		return controller.delete(id);
 	}
+	
+	@RequestMapping(value="/update",method=RequestMethod.POST,produces=MediaType.TEXT_PLAIN_VALUE)
+	public String update(@RequestBody DoctorTO doc){
+		return controller.update(doc.getS_ID(),doc.getS_NAME(),doc.getPassword());
+	}
 }

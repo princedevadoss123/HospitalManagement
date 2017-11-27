@@ -22,8 +22,9 @@ public class HospitalImplementation implements HospitalService {
 		private StaffInfo staff;
 
 		@Autowired
-		private PatientInfo patientinfo;
-
+		private PatientInfo patientinfo ;
+		
+	
 		private DoctorTO setDoctorTO(Staff s){
 			DoctorTO docc=new DoctorTO();
 			docc.setS_ID(s.getS_ID());
@@ -149,4 +150,23 @@ public class HospitalImplementation implements HospitalService {
 				return "failed";
 			}
 		}
+		
+		@Override
+		public PatientTO GetPatient(String id) {
+			PatientTO pt=new PatientTO();
+			Patient p = patientinfo.findOne(id);
+			if(p!=null){
+			pt.setP_ID(p.getP_ID());
+			pt.setP_Name(p.getP_Name());
+			return(pt);
+			
+		
+			}
+			else {
+				pt.setP_Name("not found");
+		
+			}
+			return pt;
+		}
 }
+

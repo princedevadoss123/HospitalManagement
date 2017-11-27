@@ -13,4 +13,5 @@ public interface HospitalService {
 		String add(String id,String name,String specialist,String password);
 		String delete(String id);
 		String update(String id,String name,String password);
+	   PatientTO GetPatient(String id);
 }
